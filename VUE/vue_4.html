@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-bind</title>
+    <style>
+        .active {
+            background-color: #2b84da;
+        }
+    </style>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id="app01">
+    <a :href='link' :class="{active: isActive}">去百度</a>
+</div>
+
+<script>
+    // 绑定属性，简写冒号：
+    let app01 = new Vue({
+        el: "#app01",
+        data: {
+            link: "https://www.baidu.com",
+            isActive: true
+        }
+    })
+</script>
+
+</body>
+</html>

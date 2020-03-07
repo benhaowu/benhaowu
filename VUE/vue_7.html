@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>computed</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id="app01">
+    <table border="1">
+        <thead>
+        <tr>
+            <th>学科</th>
+            <th>成绩</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Python基础</td>
+            <td><input type="text" v-model.number="python"/></td>
+        </tr>
+        <tr>
+            <td>前端</td>
+            <td><input type="text" v-model.trim="web"/></td>
+        </tr>
+        <tr>
+            <td>Django</td>
+            <td><input type="text" v-model.lazy="django"/></td>
+        </tr>
+        <tr>
+            <td>总分</td>
+            <td>{{ python + web + django }}</td>
+        </tr>
+        <tr>
+            <td>平均分</td>
+            <td>{{ avgScore }}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<script>
+    // 计算属性放在缓存当中，只有数据修改时才重新计算
+    let app01 = new Vue({
+        el: "#app01",
+        data: {
+            python: 75,
+            web: 98,
+            django: 88
+        },
+        computed: {
+            sumScore: function () {
+                return this.python + this.web + this.django;
+            },
+            avgScore: function () {
+                return this.sumScore/3;
+            }
+        }
+    })
+</script>
+
+</body>
+</html>

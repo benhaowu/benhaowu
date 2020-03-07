@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-for</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id="app01">
+    <h2>dogfa的爱好</h2>
+    <ul>
+        <li v-for="item in qianqian">{{ item }}</li>
+    </ul>
+    <h2>学生的爱好</h2>
+    <ul>
+        <li v-for="stu in students">{{ stu.name }}的爱好是{{ stu.hobby}}</li>
+    </ul>
+</div>
+
+<script>
+    let app01 = new Vue({
+        el: "#app01",
+        data: {
+            qianqian: [
+                "学习",
+                "逛街",
+                "美甲"
+            ],
+            students: [
+                {
+                    name: "dogfa",
+                    hobby: "girls"
+                },
+                {
+                    name: "djb",
+                    hobby: "girls"
+                },
+                {
+                    name: "oldniu",
+                    hobby: "study"
+                }
+            ]
+        }
+    })
+</script>
+</body>
+</html>

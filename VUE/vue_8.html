@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>watch</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <p>Original message: {{ message }}</p>
+    <p>Computed message: {{ reversedMessage }}</p>
+    <p>Full name: {{ fullName }}</p>
+    <p><input type="text" v-model="firstName"/></p>
+    <p><input type="text" v-model="lastName"/></p>
+</div>
+
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            message: "Hello Vue!",
+            firstName: "Foo",
+            lastName: "Bar",
+            fullName: "Foo Bar",
+        },
+        computed: {
+            reversedMessage: {
+                get: function () {
+                    console.log(1);
+                    // 多次刷新reversedMessage不会改变, 除非message发生改变
+                    return this.message.split('').reverse().join('');
+                }
+            }
+        },
+        watch: {
+            firstName: function (value) {
+                console.log(value);
+                this.fullName = value + ' ' + this.lastName
+            },
+            lastName: function (value) {
+                console.log(value);
+                this.fullName = this.firstName + ' ' + value
+            }
+        }
+    })
+</script>
+</body>
+</html>

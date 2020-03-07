@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-on</title>
+    <style>
+    </style>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id="app01">
+    <!--方式一: 绑定一个事件-->
+    <a :href='link'
+       :class="{active: isActive}"
+       @click="myClick"
+    >去百度</a>
+    <!--方式二: 绑定多个事件-->
+    <button v-on="{click: myClick,
+                       mouseenter: mouseEnter,
+                       mouseleave: mouseLeave}">
+        点我今晚吃鸡~~~
+    </button>
+</div>
+
+<script>
+    // 绑定属性，简写冒号：
+    let app01 = new Vue({
+        el: "#app01",
+        data: {
+            link: "https://www.baidu.com",
+            isActive: false
+        },
+        methods: {
+            myClick: function () {
+                console.log("大吉大利，今晚吃鸡~~~")
+            },
+            mouseEnter: function () {
+                console.log("鼠标来了~~~");
+            },
+            mouseLeave: function () {
+                console.log("鼠标走了~~~");
+            }
+        }
+    })
+</script>
+
+</body>
+</html>

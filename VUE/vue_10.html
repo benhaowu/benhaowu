@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用Vue实现todoList</title>
+    <script src="vue.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 500px;
+            height: auto;
+            margin: 0 auto;
+        }
+        .container .header {
+            text-align: center
+        }
+        li {
+            list-style-type: none
+        }
+        div.left {
+            float: left;
+            margin-left: 50px;
+        }
+        div.right {
+            float: right;
+            margin-right: 50px;
+        }
+        li {
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="app">
+    <div class="container">
+        <!--头部添加待办-->
+        <div class="header">
+            <input id="addthings" @keyup.enter="todoEnter" v-model="todo">
+            <span @click="todoEnter">添加待办</span>
+        </div>
+
+        <!--已办和待办最外层的盒子-->
+        <div class="box">
+            <!--已办事项-->
+            <div class="left">
+                <span>待办事项</span>
+                <div class="todos">
+                    <ul>
+                        <li v-for="(todo, index) in todoThings" :key="index">
+                            <input type="radio" name="todo" @click="addThing(index)"><span>{{ todo }}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!--待办事项-->
+            <div class="right">
+                <span>已办事项</span>
+                <div class="dones">
+                    <ul>
+                        <li v-for="(done, index) in doneThings" :key="index">
+                            <input type="radio" name="done" @click="delThing(index)"><span>{{ done }}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            todo: '',
+            addDone: '',
+            todoThings: ['写代码', '五道口吃火锅', '超市买鸡蛋', '图书馆看书', '看电影', '看演唱会', '游泳', '跑步'],
+            doneThings: ['看书', '写博客', '散步', '跟朋友聊天', '打电话给父母', '学炒菜', '洗衣服', '打扫房间']
+        },
+        methods: {
+            todoEnter: function () {
+                if (this.todo) {
+                    this.todoThings.push(this.todo);
+                    this.todo = '';
+                }
+            },
+            addThing: function (index) {
+                event.currentTarget.checked = false;
+                things = this.todoThings.splice(index, 1)[0];
+                this.doneThings.push(things);
+            },
+            delThing: function (index) {
+                event.currentTarget.checked = false;
+                things = this.doneThings.splice(index, 1)[0];
+                this.todoThings.push(things);
+            }
+        }
+    })
+</script>
+</body>
+</html>

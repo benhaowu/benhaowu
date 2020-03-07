@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id="app-01">
+    {{ message }}
+</div>
+<script>
+    // 原生js
+    let odiv = document.getElementById("app-01");
+    odiv.innerText = "Hello Vue!";
+
+    /*// vue的核心之一是允许采用简洁的模板语法来将数据渲染进DOM系统
+    let app01 = new Vue({
+        el: "#app-01",
+        data: {
+            message: "Hello Vue!"
+        }
+    });*/
+</script>
+
+</body>
+</html>

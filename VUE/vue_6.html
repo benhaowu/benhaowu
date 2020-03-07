@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-model</title>
+</head>
+<body>
+<div id="app01">
+    <p>请选择你的性别</p>
+    <br>
+    <input v-model="name"/>
+    <p><input type="text" v-model="name"/></p>
+    <p>
+        <input type="checkbox" value="男" v-model="gender"/>
+        <input type="checkbox" value="女" v-model="gender"/>
+    </p>
+    <br>
+    {{ name }}
+    {{ gender }}
+
+    <p>请选择你的女朋友</p>
+    <select name="" id="" v-model="girlFriends">
+        <option>dogfa</option>
+        <option>djb</option>
+        <option>oldniu</option>
+    </select>
+    <br>
+    {{ girlFriends }}
+
+    <p>
+        <textarea v-model="article"></textarea>
+    </p>
+    <br>
+    {{ article }}
+</div>
+<script src="vue.js"></script>
+<script>
+    let app01 = new Vue({
+        el: "#app01",
+        data: {
+            name: "dogfa",
+            gender: [],
+            girlFriends: [],
+            article: "这是一篇文章",
+        }
+    })
+</script>
+</body>
+</html>

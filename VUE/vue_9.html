@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取DOM</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id="app01">
+    <div ref="myBox">dogfa</div>
+    <button @click="dogfa">点击dogfa变红</button>
+</div>
+
+
+<script>
+    // 错误实例button放在div外面
+    let app01 = new Vue({
+        el: "#app01",
+        methods: {
+            dogfa: function () {
+                this.$refs.myBox.style.color = "red";
+            }
+        }
+    })
+</script>
+</body>
+</html>

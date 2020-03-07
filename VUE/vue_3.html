@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-if</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id="app01">
+    <div v-if="role == 'shanshan'">
+        <h2>欢迎小美女</h2>
+    </div>
+    <div v-else-if="role == 'longting'">
+        <h2>欢迎小龙女</h2>
+    </div>
+    <div v-else>
+        <h2>滚~~~</h2>
+    </div>
+</div>
+
+<script>
+    // 请注意看HTML标签元素，v-if底层使用appendChild实现
+    let app01 = new Vue({
+        el: "#app01",
+        data: {
+            role: "shansha"
+        }
+    })
+</script>
+</body>
+</html>
