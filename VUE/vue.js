@@ -11518,7 +11518,7 @@
   function checkEvent (exp, text, warn, range) {
     var stripped = exp.replace(stripStringRE, '');
     var keywordMatch = stripped.match(unaryOperatorsRE);
-    if (keywordMatch && stripped.charAt(keywordMatch.index - 1) !== '$') {
+    if (keywordMatch && stripped.charAt(keywordMatch.login - 1) !== '$') {
       warn(
         "avoid using JavaScript unary operator as property name: " +
         "\"" + (keywordMatch[0]) + "\" in expression " + (text.trim()),
